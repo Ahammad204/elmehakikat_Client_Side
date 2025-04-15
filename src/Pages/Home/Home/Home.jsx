@@ -1,11 +1,13 @@
 import React from 'react';
+import { Starter } from '../starter/Starter';
 
 const Home = () => {
     return (
-        <div>
-            <h1  className='font-bold'>This is my home</h1>
-        </div>
+        <>
+           
+
+        </>
     );
 };
 
-export default Home;
+export default Home; 
