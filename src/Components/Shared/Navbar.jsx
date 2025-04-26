@@ -14,7 +14,7 @@ const Navbar = () => {
   const navItems = [
     { label: "Knowledge", path: "/", icon: <Home size={18} className="mr-1" /> },
     { label: "Books", path: "/books", icon: <Library size={18} className="mr-1" /> },
-    { label: "Songs", path: "/reviews", icon: <Music size={18} className="mr-1" /> },
+    { label: "Songs", path: "/songs", icon: <Music size={18} className="mr-1" /> },
     { label: "Login", path: "/login", icon: <LogIn size={18} className="mr-1" /> },
   ];
 

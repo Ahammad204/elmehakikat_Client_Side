@@ -1,0 +1,57 @@
+[
+    {
+      "id": 1,
+      "category": ["Nasheed", "Spiritual"],
+      "title": "Echoes of the Soul",
+      "audio": "https://example.com/audio/echoes_of_the_soul.mp3",
+      "tags": ["Nasheed", "Spirituality", "Heartfelt"],
+      "lyrics": "Echoes of the soul, calling to the Divine,\nIn silence and in whispers, our hearts align.",
+      "meanings": "The song reflects the inner yearning of the heart to connect with the Divine presence in moments of stillness and reflection."
+    },
+    {
+      "id": 2,
+      "category": ["Classical", "Instrumental"],
+      "title": "Divine Melody",
+      "audio": "https://example.com/audio/divine_melody.mp3",
+      "tags": ["Classical", "Instrumental", "Calm"],
+      "lyrics": null,
+      "meanings": "An instrumental piece meant to evoke peace and serenity, symbolizing the harmony found in divine order."
+    },
+    {
+      "id": 3,
+      "category": ["Nasheed", "Islamic"],
+      "title": "In the Light of Faith",
+      "audio": "https://example.com/audio/in_the_light_of_faith.mp3",
+      "tags": ["Faith", "Islamic", "Inspirational"],
+      "lyrics": "In the light of faith we stand tall,\nGuided by truth, answering the call.",
+      "meanings": "This nasheed emphasizes the strength and clarity one finds when living with firm belief and purpose."
+    },
+    {
+      "id": 4,
+      "category": ["Traditional", "Cultural"],
+      "title": "Whispers of Tradition",
+      "audio": "https://example.com/audio/whispers_of_tradition.mp3",
+      "tags": ["Culture", "Traditional", "Heritage"],
+      "lyrics": "Whispers of old, tales of grace,\nStories etched in time and place.",
+      "meanings": "A tribute to cultural roots and the wisdom passed down through generations."
+    },
+    {
+      "id": 5,
+      "category": ["Devotional", "Soulful"],
+      "title": "Hearts in Prayer",
+      "audio": "https://example.com/audio/hearts_in_prayer.mp3",
+      "tags": ["Devotional", "Soulful", "Peaceful"],
+      "lyrics": "Hearts in prayer, hands raised high,\nSeeking mercy from the sky.",
+      "meanings": "This track reflects on the intimate act of turning to God in prayer, hope, and submission."
+    },
+    {
+      "id": 6,
+      "category": ["Relaxing", "Calm"],
+      "title": "Serenity in Sound",
+      "audio": "https://example.com/audio/serenity_in_sound.mp3",
+      "tags": ["Relaxing", "Calm", "Meditative"],
+      "lyrics": null,
+      "meanings": "A calm ambient piece designed to promote mindfulness and inner tranquility."
+    }
+  ]
+  
