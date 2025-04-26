@@ -1,0 +1,45 @@
+[
+    {
+      "id": 1,
+      "category": ["Tasawwuf", "Spirituality"],
+      "title": "Secrets of the Heart",
+      "link": "https://drive.google.com/file/d/1abcDxyz1/view?usp=sharing",
+      "tags": ["Sufism", "Divine Love", "Heart Purification"]
+    },
+    {
+      "id": 2,
+      "category": ["Aqidah", "Tawheed"],
+      "title": "The Foundations of Faith",
+      "link": "https://drive.google.com/file/d/2efghJKL2/view?usp=sharing",
+      "tags": ["Creed", "Faith", "Islamic Theology"]
+    },
+    {
+      "id": 3,
+      "category": ["Fiqh", "Islamic Law"],
+      "title": "Fiqh Made Easy",
+      "link": "https://drive.google.com/file/d/3mnopQRSt/view?usp=sharing",
+      "tags": ["Jurisprudence", "Worship", "Daily Practice"]
+    },
+    {
+      "id": 4,
+      "category": ["Hadith", "Prophetic Teachings"],
+      "title": "40 Hadiths of Imam Nawawi",
+      "link": "https://drive.google.com/file/d/4uvwXYZgh/view?usp=sharing",
+      "tags": ["Hadith", "Prophet Muhammad", "Core Teachings"]
+    },
+    {
+      "id": 5,
+      "category": ["Tasawwuf", "Character"],
+      "title": "Inner Dimensions of Worship",
+      "link": "https://drive.google.com/file/d/5ijkLMNO/view?usp=sharing",
+      "tags": ["Spiritual Discipline", "Prayer", "Sincerity"]
+    },
+    {
+      "id": 6,
+      "category": ["Tafsir", "Quran"],
+      "title": "Tafsir Ibn Kathir (Vol. 1)",
+      "link": "https://drive.google.com/file/d/6qrsTUvw/view?usp=sharing",
+      "tags": ["Quran", "Interpretation", "Classical Tafsir"]
+    }
+  ]
+  

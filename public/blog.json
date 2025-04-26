@@ -1,0 +1,45 @@
+[
+    {
+      "id": 1,
+      "category": ["Tasawwuf", "Spirituality"],
+      "title": "The Concept of Divine Love",
+      "blog": "The Concept of Divine Love\nPublished: May 15, 2024\n\nIn Islamic mysticism, Divine Love (Ishq-e-Haqiqi) represents the deepest spiritual connection...\n\n\"Allah will bring forth people whom He loves and who love Him.\"\n— The Quran, Surah Al-Ma'idah 5:54\n\nLevels of Divine Love:\n- Love of Knowledge\n- Love of Awe\n- Love of Gratitude\n- Pure Love\n\nThis love purifies the heart and prepares it for the Hereafter.",
+      "tags": ["Divine Love", "Sufism", "Spirituality"]
+    },
+    {
+      "id": 2,
+      "category": ["Tawheed"],
+      "title": "Oneness of Allah in Islamic Theology",
+      "blog": "Oneness of Allah\nPublished: Feb 10, 2023\n\nTawheed is the foundation of Islamic belief — that Allah is One and unique in His essence, attributes, and actions...\n\nThis concept forms the basis of all Islamic teachings and worship.",
+      "tags": ["Tawheed", "Aqidah", "Islamic Beliefs"]
+    },
+    {
+      "id": 3,
+      "category": ["Hadith", "Fiqh"],
+      "title": "Understanding the Authority of Hadith",
+      "blog": "The Authority of Hadith\nPublished: Jan 3, 2024\n\nHadith literature serves as a crucial second source of Islamic law after the Quran...\n\nScholars categorize Hadith by strength and apply rigorous methods of verification.",
+      "tags": ["Hadith", "Islamic Law", "Fiqh"]
+    },
+    {
+      "id": 4,
+      "category": ["Fiqh"],
+      "title": "The Principles of Islamic Jurisprudence",
+      "blog": "Usul al-Fiqh\nPublished: Aug 22, 2022\n\nIslamic jurisprudence is derived from Quran, Hadith, consensus (ijma’), and reasoning (qiyas)...\n\nThese principles ensure that rulings adapt across time and place.",
+      "tags": ["Fiqh", "Islamic Law", "Jurisprudence"]
+    },
+    {
+      "id": 5,
+      "category": ["Aqidah"],
+      "title": "Belief in Angels",
+      "blog": "Belief in Angels\nPublished: Apr 1, 2023\n\nAngels are honored servants of Allah who do not disobey Him and fulfill His commands...\n\nTheir existence is a part of Islamic creed (Aqidah).",
+      "tags": ["Aqidah", "Angels", "Iman"]
+    },
+    {
+      "id": 6,
+      "category": ["Tasawwuf"],
+      "title": "The Role of Dhikr in Heart Purification",
+      "blog": "Dhikr and the Heart\nPublished: Oct 11, 2023\n\nConstant remembrance of Allah (dhikr) softens and purifies the heart...\n\nSufis use dhikr as a means to develop inner awareness and proximity to the Divine.",
+      "tags": ["Dhikr", "Tasawwuf", "Heart"]
+    }
+  ]
+  

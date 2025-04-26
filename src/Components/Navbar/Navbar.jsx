@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Home, BookOpen, Library, Music, LogIn } from "lucide-react";
-import logo from "../../assets/book.png";
+import logo from "../../assets/logo.jpeg"
 
 const Navbar = () => {
   const location = useLocation();
@@ -12,10 +11,11 @@ const Navbar = () => {
   };
 
   const navItems = [
-    { label: "Knowledge", path: "/", icon: <Home size={18} className="mr-1" /> },
-    { label: "Books", path: "/books", icon: <Library size={18} className="mr-1" /> },
-    { label: "Songs", path: "/reviews", icon: <Music size={18} className="mr-1" /> },
-    { label: "Login", path: "/login", icon: <LogIn size={18} className="mr-1" /> },
+    { label: "Home Page", path: "/" },
+    { label: "Blogs", path: "/blogs" },
+    { label: "Books", path: "/books" },
+    { label: "Songs", path: "/songs" },
+    { label: "Login", path: "/login" },
   ];
 
   const navOptions = (
@@ -24,11 +24,10 @@ const Navbar = () => {
         <li key={item.path} onClick={() => handleActive(item.path)}>
           <Link
             to={item.path}
-            className={`relative flex items-center transition-all duration-300 ${
+            className={`relative transition-all duration-300 ${
               active === item.path ? "text-[#00B67A]" : ""
             }`}
           >
-            {item.icon}
             {item.label}
             {active === item.path && (
               <span className="absolute bottom-0 left-0 h-1 w-full bg-[#00B67A]"></span>
@@ -40,7 +39,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className="navbar mt-4 bg-base-100 shadow-sm sticky top-0 z-50">
+    <div className="navbar mt-5 bg-base-100 shadow-sm">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -59,11 +58,11 @@ const Navbar = () => {
               />
             </svg>
           </div>
-          <ul className="menu menu-sm dropdown-content bg-base-100 rounded-box z-10 mt-3 w-52 p-2 shadow">
+          <ul className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
             {navOptions}
           </ul>
         </div>
-        <img className="w-6 h-6" src={logo} alt="Logo" />
+        <img className=" w-20 h-20 cursor-pointer" src={logo} alt="" />
       </div>
       <div className="navbar-end hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{navOptions}</ul>
