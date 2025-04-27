@@ -40,23 +40,23 @@ const Dashboard = () => {
           </li>
 
           <li>
-            <NavLink to="/dashboard/book-collection">
+            <NavLink to="/dashboard/add-book">
               <BookOpen className="w-5 h-5" />
-              Book Collection
+              Add Book
             </NavLink>
           </li>
 
           <li>
-            <NavLink to="/dashboard/users">
+            <NavLink to="/dashboard/add-blog">
               <UserRound className="w-5 h-5" />
-              All Users
+              Add Blog
             </NavLink>
           </li>
 
           <li>
-            <NavLink to="/dashboard/allPets">
+            <NavLink to="/dashboard/category-manage">
               <PawPrint className="w-5 h-5" />
-              All Pets
+              Manage Category
             </NavLink>
           </li>
 

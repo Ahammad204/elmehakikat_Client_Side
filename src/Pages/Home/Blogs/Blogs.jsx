@@ -4,16 +4,27 @@ import { Link } from 'react-router-dom';
 
 export const Blogs = () => {
   const [blogs, setBlogs] = useState([]);
+  const [categories, setCategories] = useState(["All"]); 
   const [activeCategory, setActiveCategory] = useState('All');
   const [searchTerm, setSearchTerm] = useState('');
 
-  const categories = ['All', 'Tawheed', 'Tasawwuf', 'Fiqh', 'Hadith', 'Aqidah'];
+
 
   // Fetch blogs.json
   useEffect(() => {
-    fetch('/blog.json')
+    fetch('http://localhost:5000/all-blogs')
       .then((res) => res.json())
       .then((data) => setBlogs(data));
+  }, []);
+
+      // Fetch all categories
+  useEffect(() => {
+    fetch("http://localhost:5000/categories/blog")
+      .then((res) => res.json())
+      .then((data) => {
+        const fetchedCategories = data.map((item) => item.category);
+        setCategories(["All", ...fetchedCategories]);
+      });
   }, []);
 
   // Filtered blogs
@@ -65,7 +76,7 @@ export const Blogs = () => {
       {/* Cards Section */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-6 pb-10">
         {filteredBlogs.map((blog) => (
-        <Link to={`/blog/${blog.id}`} key={blog.id} className="card bg-black shadow-md w-full hover:shadow-lg transition-shadow">
+        <Link to={`/blog/${blog._id}`} key={blog._id} className="card bg-black shadow-md w-full hover:shadow-lg transition-shadow">
         <div className="card-body">
           <h2 className="card-title text-[#b99543]">{blog.title}</h2>
           <p className="text-white">

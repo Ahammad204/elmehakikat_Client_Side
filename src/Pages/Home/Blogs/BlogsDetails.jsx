@@ -4,15 +4,18 @@ import { useParams, Link } from 'react-router-dom';
 export const BlogsDetails = () => {
   const { id } = useParams();
   const [blog, setBlog] = useState(null);
+  console.log(id)
 
   useEffect(() => {
-    fetch('/blog.json')
+    fetch('http://localhost:5000/all-blogs')
       .then((res) => res.json())
       .then((data) => {
-        const found = data.find((item) => item.id === parseInt(id));
+        const found = data.find((item) => item._id === id);
         setBlog(found);
       });
   }, [id]);
+
+  console.log(blog)
 
   if (!blog) return <div className="p-10 text-center text-gray-600">Loading blog...</div>;
 

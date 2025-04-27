@@ -1,27 +1,39 @@
-import React, { useEffect, useState } from 'react';
-import { Search } from 'lucide-react';
+import React, { useEffect, useState } from "react";
+import { Search } from "lucide-react";
 
 export const Books = () => {
   const [books, setBooks] = useState([]);
-  const [activeCategory, setActiveCategory] = useState('All');
-  const [searchTerm, setSearchTerm] = useState('');
-
-  const categories = ['All', 'Tawheed', 'Tasawwuf', 'Fiqh', 'Hadith', 'Aqidah'];
+  const [categories, setCategories] = useState(["All"]); 
+  const [activeCategory, setActiveCategory] = useState("All");
+  const [searchTerm, setSearchTerm] = useState("");
 
   // Fetch books.json
   useEffect(() => {
-    fetch('/books.json')
+    fetch("http://localhost:5000/all-books")
       .then((res) => res.json())
       .then((data) => setBooks(data));
+  }, []);
+  // Fetch all categories
+  useEffect(() => {
+    fetch("http://localhost:5000/categories/book")
+      .then((res) => res.json())
+      .then((data) => {
+        const fetchedCategories = data.map((item) => item.category);
+        setCategories(["All", ...fetchedCategories]);
+      });
   }, []);
 
   // Filtered books
   const filteredBooks = books.filter((book) => {
     const matchesCategory =
-      activeCategory === 'All' || book.category.includes(activeCategory);
-    const matchesSearch = book.title.toLowerCase().includes(searchTerm.toLowerCase());
+      activeCategory === "All" || book.category.includes(activeCategory);
+    const matchesSearch = book.title
+      .toLowerCase()
+      .includes(searchTerm.toLowerCase());
     return matchesCategory && matchesSearch;
   });
+
+
 
   return (
     <>
@@ -51,8 +63,8 @@ export const Books = () => {
               onClick={() => setActiveCategory(category)}
               className={`px-5 py-2 rounded-full border text-sm md:text-base ${
                 activeCategory === category
-                  ? 'bg-[#b99543] text-black'
-                  : 'bg-white text-gray-400 border-gray-300'
+                  ? "bg-[#b99543] text-black"
+                  : "bg-white text-gray-400 border-gray-300"
               }`}
             >
               {category}
@@ -73,9 +85,7 @@ export const Books = () => {
           >
             <div className="card-body">
               <h2 className="card-title text-[#b99543]">{book.title}</h2>
-              <p className="text-white">
-                {book.title}
-              </p>
+              <p className="text-white">{book.title}</p>
               <div className="justify-start card-actions mt-4 flex flex-wrap gap-2">
                 {book.category.map((cat, index) => (
                   <button

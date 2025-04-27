@@ -9,6 +9,9 @@ import Dashboard from "../Pages/Dashboard/Dashboard";
 import AddMusic from "../Pages/Admin/AddMusic/AddMusic";
 import AllMusic from "../Pages/Admin/AllMusic/AllMusic";
 import UpdateMusic from "../Pages/Admin/AllMusic/UpdateMusic";
+import AddBook from "../Pages/Admin/AddBook/AddBook";
+import AddBlog from "../Pages/Admin/AddBlog/Addblog";
+import CategoryManager from "../Pages/Admin/CategoryManager/CategoryManager";
 
 export const router = createBrowserRouter([
   {
@@ -50,6 +53,15 @@ export const router = createBrowserRouter([
     },{
       path:"/dashboard/update-music/:id",
       element:<UpdateMusic></UpdateMusic>
+    },{
+      path:"/dashboard/add-book",
+      element:<AddBook></AddBook>
+    },{
+      path:"/dashboard/add-blog",
+      element:<AddBlog></AddBlog>
+    },{
+      path:"/dashboard/category-manage",
+      element:<CategoryManager></CategoryManager>
     }
   ]
   },
