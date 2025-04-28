@@ -3,7 +3,7 @@ import { Search } from "lucide-react";
 
 export const Books = () => {
   const [books, setBooks] = useState([]);
-  const [categories, setCategories] = useState(["All"]); 
+  const [categories, setCategories] = useState(["All"]);
   const [activeCategory, setActiveCategory] = useState("All");
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -33,13 +33,11 @@ export const Books = () => {
     return matchesCategory && matchesSearch;
   });
 
-
-
   return (
     <>
-      <div className="flex flex-col items-center px-4 py-10">
+      <div className="flex flex-col items-center   px-4 py-10">
         <h1 className="text-3xl md:text-4xl font-bold text-[#b99543] text-center">
-          Book Collection
+          Beneficial Books
         </h1>
         <div className="h-1 w-12 bg-[#b99543] my-4" />
 
@@ -74,23 +72,49 @@ export const Books = () => {
       </div>
 
       {/* Cards Section */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-6 pb-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-6 pb-10 mb-20">
         {filteredBooks.map((book) => (
           <a
             key={book.id}
-            href={book.link} // Redirects to the external link (e.g., Google Drive link)
-            target="_blank" // Open in a new tab
-            rel="noopener noreferrer" // Security measure for opening external links
-            className="card bg-black shadow-md w-full hover:shadow-lg transition-shadow"
+            href={book.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded-xl overflow-hidden shadow-md w-full hover:shadow-lg transition-transform hover:scale-105 bg-white"
           >
-            <div className="card-body">
-              <h2 className="card-title text-[#b99543]">{book.title}</h2>
-              <p className="text-white">{book.title}</p>
-              <div className="justify-start card-actions mt-4 flex flex-wrap gap-2">
+            {/* Card Header */}
+            <div className="bg-[#b99543] p-4  text-center items-center">
+              <h2 className="text-lg font-bold text-center text-black">
+                {book.title}
+              </h2>
+            </div>
+
+            {/* Card Body */}
+            <div className="flex flex-col items-center justify-center bg-gradient-to-b from-gray-100 to-white py-10">
+              <div className="text-[#b99543] text-5xl">📖</div>
+            </div>
+
+            {/* Card Footer */}
+            <div className="p-4">
+              {/* Published and Updated Dates */}
+              <p className="text-lg text-gray-500 mb-1">
+                Published On :  
+                 { book.addedAt
+                  ? new Date(book.addedAt).toLocaleDateString()
+                  : "N/A"}
+              </p>
+              <p className="text-lg text-gray-500 mb-4">
+                Updated At :
+                {book.updatedAt
+                  ? new Date(book.updatedAt).toLocaleDateString()
+                  : "Not updated yet"}
+              </p>
+
+              {/* Tags */}
+              <div className="flex flex-wrap gap-2">
                 {book.category.map((cat, index) => (
                   <button
                     key={index}
-                    className="btn btn-outline border-[#b99543] text-[#b99543] hover:bg-[#b99543] hover:text-black"
+                    className="bg-[#efe2c7] text-[#b99543] text-xs font-semibold px-3 py-1 rounded-full"
                   >
                     {cat}
                   </button>

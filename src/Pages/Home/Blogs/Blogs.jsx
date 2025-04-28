@@ -61,10 +61,10 @@ export const Blogs = () => {
             <button
               key={category}
               onClick={() => setActiveCategory(category)}
-              className={`px-5 py-2 rounded-full border text-sm md:text-base ${
+              className={`px-5 py-2 rounded-full  text-sm md:text-base ${
                 activeCategory === category
-                  ? 'bg-[#b99543] text-black'
-                  : 'bg-white text-gray-400 border-gray-300'
+                  ? 'bg-[#b99543] text-black '
+                  : 'bg-white text-gray-400 border'
               }`}
             >
               {category}
@@ -74,19 +74,20 @@ export const Blogs = () => {
       </div>
 
       {/* Cards Section */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-6 pb-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-24 px-6 pb-10">
         {filteredBlogs.map((blog) => (
-        <Link to={`/blog/${blog._id}`} key={blog._id} className="card bg-black shadow-md w-full hover:shadow-lg transition-shadow">
+        <Link to={`/blog/${blog?._id}`} key={blog._id} className="card bg-[#1e1e1e] shadow-md w-full hover:shadow-lg  transition-transform hover:scale-105">
         <div className="card-body">
-          <h2 className="card-title text-[#b99543]">{blog.title}</h2>
-          <p className="text-white">
-            {blog.blog.split('\n').slice(0, 3).join(' ')}...
+          <h2 className="card-title text-[#b99543] text-2xl">{blog?.title}</h2>
+          <p className="text-white text-xl">
+            {blog?.blog.split('\n').slice(0, 1).join(' ')}...
           </p>
           <div className="justify-start card-actions mt-4 flex flex-wrap gap-2">
-            {blog.category.map((cat, index) => (
+            {blog?.category.map((cat, index) => (
               <button
                 key={index}
-                className="btn btn-outline border-[#b99543] text-[#b99543] hover:bg-[#b99543] hover:text-black"
+                className=" p-3 rounded-full bg-[#373227]   text-[#b99543] hover:bg-[#b99543]
+                 hover:text-black"
               >
                 {cat}
               </button>

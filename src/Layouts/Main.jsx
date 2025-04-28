@@ -11,8 +11,9 @@ const Main = () => {
       <Banner></Banner>
 
       <Outlet></Outlet>
-      <div className="static">
-      <Navbar></Navbar>
+        {/* Sticky Navbar at the bottom */}
+        <div className="fixed bottom-0 left-0 w-full bg-white z-50">
+        <Navbar />
       </div>
     </>
   );
