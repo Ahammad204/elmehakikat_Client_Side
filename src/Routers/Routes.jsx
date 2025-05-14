@@ -16,6 +16,8 @@ import AllBook from "../Pages/Admin/AllBook/AllBook";
 import UpdateBook from "../Pages/Admin/AllBook/UpdateBook";
 import AllBlog from "../Pages/Admin/AllBlog/AllBlog";
 import UpdateBlog from "../Pages/Admin/AllBlog/UpdateBlog";
+import Login from "../Pages/Login/Login";
+import Register from "../Pages/Register/Register";
 
 export const router = createBrowserRouter([
   {
@@ -45,7 +47,13 @@ export const router = createBrowserRouter([
       path: "/blog/:id",
       element: <BlogsDetails />,
     
-  },
+  },{
+        path:"/login",
+        element:<Login></Login>
+      },{
+        path:"/register",
+        element:<Register></Register>
+      },
   {
     path: "/dashboard",
     element: <Dashboard />,

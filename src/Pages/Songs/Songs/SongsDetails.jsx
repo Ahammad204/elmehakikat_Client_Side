@@ -20,7 +20,7 @@ export const MusicDetails = () => {
   }
 
   return (
-    <div className="flex flex-col items-center px-4 py-10">
+    <div className="flex flex-col items-center px-4 py-10 my-20">
       <h1 className="text-3xl md:text-4xl font-bold text-[#b99543] text-center mb-6">
         {song.title}
       </h1>

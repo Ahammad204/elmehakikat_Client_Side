@@ -75,12 +75,12 @@ export const Music = () => {
       </div>
 
       {/* Songs Section */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-6 pb-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-6 pb-10 my-20 ">
         {filteredSongs.map((song) => (
           <Link
             to={`/music/${song._id}`}
             key={song._id}
-            className="card bg-black shadow-md w-full hover:shadow-lg transition-shadow p-4"
+            className="card bg-black shadow-md w-full hover:shadow-lg transition-transform hover:scale-105  p-4"
           >
             <h2 className="text-[#b99543] text-xl font-semibold mb-2">
               {song.title}

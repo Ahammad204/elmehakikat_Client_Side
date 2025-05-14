@@ -48,7 +48,7 @@ const AllMusic = () => {
     const currentSongs = songs.slice(offset, offset + songsPerPage);
 
     return (
-        <div className="p-6">
+        <div className="p-6 ">
             <h2 className="text-3xl text-[#b99543] font-semibold mb-4">All Music</h2>
 
             <div className="overflow-x-auto">
@@ -94,7 +94,7 @@ const AllMusic = () => {
             </div>
 
             {songs.length > songsPerPage && (
-                <div className="flex justify-center mt-6">
+                <div className="flex justify-center mt-6 ">
                     <Pagination
                         count={Math.ceil(songs.length / songsPerPage)}
                         page={currentPage}
