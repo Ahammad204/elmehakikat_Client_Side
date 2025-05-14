@@ -1,18 +1,33 @@
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-
 import Select from 'react-select';
 import useAxiosPublic from '../../../Hooks/useAxiosPublic';
 import Swal from 'sweetalert2';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import SectionTitle from '../../../Components/SectionTItle/SectionTItle';
 
-// Your component
 const AddMusic = () => {
     const axiosPublic = useAxiosPublic();
     const [selectedCategory, setSelectedCategory] = useState(null);
+    const [categoryOptions, setCategoryOptions] = useState([]);
 
-    // Formik initialization
+    // Fetch category options dynamically
+    useEffect(() => {
+        const fetchCategories = async () => {
+            try {
+                const res = await axiosPublic.get('/categories/song');
+                const categories = res.data.map(cat => ({
+                    value: cat.category, 
+                    label: cat.category,
+                }));
+                setCategoryOptions(categories);
+            } catch (error) {
+                console.error('Error fetching categories:', error);
+            }
+        };
+        fetchCategories();
+    }, [axiosPublic]);
+
     const formik = useFormik({
         initialValues: {
             title: '',
@@ -24,7 +39,7 @@ const AddMusic = () => {
         },
         validationSchema: Yup.object({
             title: Yup.string().required('Title is required'),
-            category: Yup.string().required('Category is required').matches(/^(Nasheed|Spiritual|Classical|Instrumental|Devotional)$/, 'Invalid category'),
+            category: Yup.string().required('Category is required'),
             audio: Yup.string().required('Audio URL is required'),
             tags: Yup.string().required('Tags are required'),
             lyrics: Yup.string().required('Lyrics are required'),
@@ -32,19 +47,15 @@ const AddMusic = () => {
         }),
 
         onSubmit: async (values) => {
-            // Here you can send the data to your MongoDB server or API
-            console.log('Form data submitted:', values);
             const musicItem = {
                 title: values.title,
                 category: values.category,
-                audioUrl: values.audio, 
+                audioUrl: values.audio,
                 tags: values.tags.split(','),
                 lyrics: values.lyrics,
                 meanings: values.meanings,
-              };
-              
+            };
 
-            // Send the music data to the server
             try {
                 const musicRes = await axiosPublic.post('/add-music', musicItem);
                 console.log(musicRes.data);
@@ -57,6 +68,8 @@ const AddMusic = () => {
                         showConfirmButton: false,
                         timer: 1500,
                     });
+                    formik.resetForm();
+                    setSelectedCategory(null);
                 }
             } catch (error) {
                 console.error('Error adding music:', error);
@@ -89,12 +102,10 @@ const AddMusic = () => {
                         value={formik.values.title}
                         className="input input-bordered w-full"
                     />
-                    {formik.touched.title && formik.errors.title ? (
-                        <div>{formik.errors.title}</div>
-                    ) : null}
+                    {formik.touched.title && formik.errors.title && <div>{formik.errors.title}</div>}
                 </div>
 
-                {/* Category Input (React Select) */}
+                {/* Category Select */}
                 <div className="form-control w-full my-6">
                     <label className="label" htmlFor="category">
                         <span className="label-text">Category*</span>
@@ -102,21 +113,15 @@ const AddMusic = () => {
                     <Select
                         id="category"
                         name="category"
-                        options={[
-                            { value: 'Nasheed', label: 'Nasheed' },
-                            { value: 'Spiritual', label: 'Spiritual' },
-                            { value: 'Classical', label: 'Classical' },
-                            { value: 'Instrumental', label: 'Instrumental' },
-                            { value: 'Devotional', label: 'Devotional' },
-                        ]}
+                        options={categoryOptions}
                         onChange={handleCategoryChange}
                         onBlur={formik.handleBlur}
                         value={selectedCategory}
                         className="react-select"
+                        placeholder="Select a category"
+                        isLoading={categoryOptions.length === 0}
                     />
-                    {formik.touched.category && formik.errors.category ? (
-                        <div>{formik.errors.category}</div>
-                    ) : null}
+                    {formik.touched.category && formik.errors.category && <div>{formik.errors.category}</div>}
                 </div>
 
                 {/* Audio URL Input */}
@@ -134,9 +139,7 @@ const AddMusic = () => {
                         value={formik.values.audio}
                         className="input input-bordered w-full"
                     />
-                    {formik.touched.audio && formik.errors.audio ? (
-                        <div>{formik.errors.audio}</div>
-                    ) : null}
+                    {formik.touched.audio && formik.errors.audio && <div>{formik.errors.audio}</div>}
                 </div>
 
                 {/* Tags Input */}
@@ -154,9 +157,7 @@ const AddMusic = () => {
                         value={formik.values.tags}
                         className="input input-bordered w-full"
                     />
-                    {formik.touched.tags && formik.errors.tags ? (
-                        <div>{formik.errors.tags}</div>
-                    ) : null}
+                    {formik.touched.tags && formik.errors.tags && <div>{formik.errors.tags}</div>}
                 </div>
 
                 {/* Lyrics Input */}
@@ -173,9 +174,7 @@ const AddMusic = () => {
                         className="textarea textarea-bordered w-full"
                         placeholder="Enter Lyrics"
                     />
-                    {formik.touched.lyrics && formik.errors.lyrics ? (
-                        <div>{formik.errors.lyrics}</div>
-                    ) : null}
+                    {formik.touched.lyrics && formik.errors.lyrics && <div>{formik.errors.lyrics}</div>}
                 </div>
 
                 {/* Meanings Input */}
@@ -192,9 +191,7 @@ const AddMusic = () => {
                         className="textarea textarea-bordered w-full"
                         placeholder="Enter Meanings"
                     />
-                    {formik.touched.meanings && formik.errors.meanings ? (
-                        <div>{formik.errors.meanings}</div>
-                    ) : null}
+                    {formik.touched.meanings && formik.errors.meanings && <div>{formik.errors.meanings}</div>}
                 </div>
 
                 {/* Submit Button */}

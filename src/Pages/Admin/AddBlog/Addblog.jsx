@@ -2,35 +2,20 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import Select from "react-select";
 import Swal from "sweetalert2";
-<<<<<<< HEAD
-import { useState } from "react";
-=======
 import { useEffect, useState } from "react";
->>>>>>> 045299524a4689c971ccff2c64958c52e89c8901
 import SectionTitle from "../../../Components/SectionTItle/SectionTItle";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 
-const AddBook = () => {
+const AddBlog = () => {
   const axiosPublic = useAxiosPublic();
   const [selectedCategories, setSelectedCategories] = useState([]);
-<<<<<<< HEAD
-
-  const categoryOptions = [
-    { value: "Aqidah", label: "Aqidah" },
-    { value: "Hadith", label: "Hadith" },
-    { value: "Fiqh", label: "Fiqh" },
-    { value: "Tasawwuf", label: "Tasawwuf" },
-    { value: "Tawheed", label: "Tawheed" },
-    { value: "Quran", label: "Quran" }
-  ];
-=======
   const [categoryOptions, setCategoryOptions] = useState([]);
 
- // Fetch categories from backend
+  // Fetch categories from backend
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const res = await axiosPublic.get('/categories/book');
+        const res = await axiosPublic.get('/categories/blog');
         const categoriesData = res.data.map(cat => ({
           value: cat.category,
           label: cat.category
@@ -44,33 +29,29 @@ const AddBook = () => {
     fetchCategories();
   }, [axiosPublic]);
 
->>>>>>> 045299524a4689c971ccff2c64958c52e89c8901
-
   const formik = useFormik({
     initialValues: {
       title: "",
       categories: [],
-      link: "",
+      blog: "",
       tags: "",
     },
     validationSchema: Yup.object({
       title: Yup.string().required("Title is required"),
       categories: Yup.array().min(1, "Select at least one category"),
-      link: Yup.string()
-        .url("Invalid link format")
-        .required("Google Drive link is required"),
+      blog: Yup.string().required("Blog content is required"),
       tags: Yup.string().required("Tags are required"),
     }),
     onSubmit: async (values) => {
-      const bookItem = {
+      const blogItem = {
         title: values.title,
         category: values.categories, // array
-        link: values.link,
+        blog: values.blog,
         tags: values.tags.split(","),
       };
 
       try {
-        const res = await axiosPublic.post("/add-book", bookItem);
+        const res = await axiosPublic.post("/add-blog", blogItem);
         console.log(res.data);
         if (res.data.insertedId) {
           Swal.fire({
@@ -84,7 +65,7 @@ const AddBook = () => {
           setSelectedCategories([]);
         }
       } catch (error) {
-        console.error("Error adding book:", error);
+        console.error("Error adding blog:", error);
       }
     },
   });
@@ -99,7 +80,7 @@ const AddBook = () => {
 
   return (
     <div>
-      <SectionTitle heading="Add Book" subHeading="Share Knowledge with the World" />
+      <SectionTitle heading="Add Blog" subHeading="Share Thoughts with the Ummah" />
 
       <form onSubmit={formik.handleSubmit}>
         {/* Title Input */}
@@ -111,14 +92,14 @@ const AddBook = () => {
             type="text"
             id="title"
             name="title"
-            placeholder="Enter Book Title"
+            placeholder="Enter Blog Title"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.title}
             className="input input-bordered w-full"
           />
           {formik.touched.title && formik.errors.title ? (
-            <div>{formik.errors.title}</div>
+            <div className="text-red-500">{formik.errors.title}</div>
           ) : null}
         </div>
 
@@ -138,27 +119,27 @@ const AddBook = () => {
             className="react-select"
           />
           {formik.touched.categories && formik.errors.categories ? (
-            <div>{formik.errors.categories}</div>
+            <div className="text-red-500">{formik.errors.categories}</div>
           ) : null}
         </div>
 
-        {/* Link Input */}
+        {/* Blog Textarea */}
         <div className="form-control w-full my-6">
-          <label className="label" htmlFor="link">
-            <span className="label-text">Google Drive Link*</span>
+          <label className="label" htmlFor="blog">
+            <span className="label-text">Blog Content*</span>
           </label>
-          <input
-            type="url"
-            id="link"
-            name="link"
-            placeholder="Enter Google Drive Link"
+          <textarea
+            id="blog"
+            name="blog"
+            placeholder="Write your blog here..."
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
-            value={formik.values.link}
-            className="input input-bordered w-full"
+            value={formik.values.blog}
+            className="textarea textarea-bordered w-full"
+            rows="10"
           />
-          {formik.touched.link && formik.errors.link ? (
-            <div>{formik.errors.link}</div>
+          {formik.touched.blog && formik.errors.blog ? (
+            <div className="text-red-500">{formik.errors.blog}</div>
           ) : null}
         </div>
 
@@ -178,17 +159,17 @@ const AddBook = () => {
             className="input input-bordered w-full"
           />
           {formik.touched.tags && formik.errors.tags ? (
-            <div>{formik.errors.tags}</div>
+            <div className="text-red-500">{formik.errors.tags}</div>
           ) : null}
         </div>
 
         {/* Submit Button */}
         <button type="submit" className="btn bg-[#f04336] hover:bg-[#f04336] w-full text-white">
-          Add Book
+          Add Blog
         </button>
       </form>
     </div>
   );
 };
 
-export default AddBook;
+export default AddBlog;

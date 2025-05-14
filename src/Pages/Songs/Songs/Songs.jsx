@@ -1,25 +1,42 @@
-import React, { useEffect, useState } from 'react';
-import { Search } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { Search } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export const Music = () => {
   const [songs, setSongs] = useState([]);
-  const [activeCategory, setActiveCategory] = useState('All');
-  const [searchTerm, setSearchTerm] = useState('');
+  const [categories, setCategories] = useState(["All"]);
+  const [activeCategory, setActiveCategory] = useState("All");
+  const [searchTerm, setSearchTerm] = useState("");
 
+<<<<<<< HEAD
   const categories = ['All', 'Nasheed', 'Instrumental', 'Spiritual', 'Classical', 'Devotional'];
+=======
+  // const categories = ['All', 'Nasheed', 'Instrumental', 'Spiritual', 'Classical', 'Devotional'];
+>>>>>>> 045299524a4689c971ccff2c64958c52e89c8901
 
   useEffect(() => {
-    fetch('http://localhost:5000/all-music') // Change to your deployed backend URL if needed
+    fetch("http://localhost:5000/all-music") // Change to your deployed backend URL if needed
       .then((res) => res.json())
       .then((data) => setSongs(data))
       .catch((err) => console.error("Error fetching music:", err));
   }, []);
 
+  // Fetch all categories
+  useEffect(() => {
+    fetch("http://localhost:5000/categories/song")
+      .then((res) => res.json())
+      .then((data) => {
+        const fetchedCategories = data.map((item) => item.category);
+        setCategories(["All", ...fetchedCategories]);
+      });
+  }, []);
+
   const filteredSongs = songs.filter((song) => {
     const matchesCategory =
-      activeCategory === 'All' || song.category === activeCategory;
-    const matchesSearch = song.title.toLowerCase().includes(searchTerm.toLowerCase());
+      activeCategory === "All" || song.category === activeCategory;
+    const matchesSearch = song.title
+      .toLowerCase()
+      .includes(searchTerm.toLowerCase());
     return matchesCategory && matchesSearch;
   });
 
@@ -51,8 +68,8 @@ export const Music = () => {
               onClick={() => setActiveCategory(category)}
               className={`px-5 py-2 rounded-full border text-sm md:text-base ${
                 activeCategory === category
-                  ? 'bg-[#b99543] text-black'
-                  : 'bg-white text-gray-400 border-gray-300'
+                  ? "bg-[#b99543] text-black"
+                  : "bg-white text-gray-400 border-gray-300"
               }`}
             >
               {category}
@@ -69,7 +86,9 @@ export const Music = () => {
             key={song._id}
             className="card bg-black shadow-md w-full hover:shadow-lg transition-shadow p-4"
           >
-            <h2 className="text-[#b99543] text-xl font-semibold mb-2">{song.title}</h2>
+            <h2 className="text-[#b99543] text-xl font-semibold mb-2">
+              {song.title}
+            </h2>
             <audio controls className="w-full mb-3">
               <source src={song.audioUrl || song.audio} type="audio/mpeg" />
               Your browser does not support the audio element.

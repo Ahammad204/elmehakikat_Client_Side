@@ -10,6 +10,15 @@ import AddMusic from "../Pages/Admin/AddMusic/AddMusic";
 import AllMusic from "../Pages/Admin/AllMusic/AllMusic";
 import UpdateMusic from "../Pages/Admin/AllMusic/UpdateMusic";
 import AddBook from "../Pages/Admin/AddBook/AddBook";
+<<<<<<< HEAD
+=======
+import AddBlog from "../Pages/Admin/AddBlog/AddBlog";
+import CategoryManager from "../Pages/Admin/CategoryManager/CategoryManager";
+import AllBook from "../Pages/Admin/AllBook/AllBook";
+import UpdateBook from "../Pages/Admin/AllBook/UpdateBook";
+import AllBlog from "../Pages/Admin/AllBlog/AllBlog";
+import UpdateBlog from "../Pages/Admin/AllBlog/UpdateBlog";
+>>>>>>> 045299524a4689c971ccff2c64958c52e89c8901
 
 export const router = createBrowserRouter([
   {
@@ -20,10 +29,7 @@ export const router = createBrowserRouter([
         path: "/",
         element: <Home />,
       },
-      {
-        path: "/blog/:id",
-        element: <BlogsDetails />,
-      },
+     
       {
         path: "/books",
         element: <Books />,
@@ -37,12 +43,18 @@ export const router = createBrowserRouter([
         element: <MusicDetails />,
       },
     ],
+  },{
+  
+      path: "/blog/:id",
+      element: <BlogsDetails />,
+    
   },
   {
     path: "/dashboard",
     element: <Dashboard />,
-    children:[
+    children: [
       {
+<<<<<<< HEAD
       path:"/dashboard/music-library",
       element:<AddMusic></AddMusic>
     },{
@@ -56,5 +68,49 @@ export const router = createBrowserRouter([
       element:<AddBook></AddBook>
     }
   ]
+=======
+        path: "/dashboard/music-library",
+        element: <AddMusic></AddMusic>,
+      },
+      {
+        path: "/dashboard/all-music",
+        element: <AllMusic></AllMusic>,
+      },
+      {
+        path: "/dashboard/all-book",
+        element: <AllBook></AllBook>,
+      },
+      {
+        path: "/dashboard/update-music/:id",
+        element: <UpdateMusic></UpdateMusic>,
+      },
+      
+      {
+        path: "/dashboard/all-blog",
+        element: <AllBlog></AllBlog>,
+      },
+      {
+        path: "/dashboard/update-blog/:id",
+        element: <UpdateBlog></UpdateBlog>,
+      },
+      
+      {
+        path: "/dashboard/update-book/:id",
+        element: <UpdateBook></UpdateBook>,
+      },
+      {
+        path: "/dashboard/add-book",
+        element: <AddBook></AddBook>,
+      },
+      {
+        path: "/dashboard/add-blog",
+        element: <AddBlog></AddBlog>,
+      },
+      {
+        path: "/dashboard/category-manage",
+        element: <CategoryManager></CategoryManager>,
+      },
+    ],
+>>>>>>> 045299524a4689c971ccff2c64958c52e89c8901
   },
 ]);

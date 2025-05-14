@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Home, BookOpen, Library, Music, LogIn } from "lucide-react";
-import logo from "../../assets/book.png";
+
 
 const Navbar = () => {
   const location = useLocation();
@@ -12,10 +12,10 @@ const Navbar = () => {
   };
 
   const navItems = [
-    { label: "Knowledge", path: "/", icon: <Home size={18} className="mr-1" /> },
-    { label: "Books", path: "/books", icon: <Library size={18} className="mr-1" /> },
-    { label: "Songs", path: "/songs", icon: <Music size={18} className="mr-1" /> },
-    { label: "Login", path: "/login", icon: <LogIn size={18} className="mr-1" /> },
+    { label: "Knowledge", path: "/", icon: <Home size={30} className="mr-1" /> },
+    { label: "Books", path: "/books", icon: <Library size={30} className="mr-1" /> },
+    { label: "Songs", path: "/songs", icon: <Music size={30} className="mr-1" /> },
+    { label: "Login", path: "/login", icon: <LogIn size={30} className="mr-1" /> },
   ];
 
   const navOptions = (
@@ -25,13 +25,13 @@ const Navbar = () => {
           <Link
             to={item.path}
             className={`relative flex items-center transition-all duration-300 ${
-              active === item.path ? "text-[#00B67A]" : ""
+              active === item.path ? "text-[#c4a455]" : ""
             }`}
           >
-            {item.icon}
-            {item.label}
+           <div className="flex justify-center flex-col items-center text-lg"> {item.icon} {item.label}</div><br />
+            
             {active === item.path && (
-              <span className="absolute bottom-0 left-0 h-1 w-full bg-[#00B67A]"></span>
+              <span className="absolute bottom-0 left-0 h-1 w-full bg-[#c4a455]"></span>
             )}
           </Link>
         </li>
@@ -41,34 +41,13 @@ const Navbar = () => {
 
   return (
     <div className="navbar mt-4 bg-base-100 shadow-sm sticky top-0 z-50">
-      <div className="navbar-start">
-        <div className="dropdown">
-          <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h8m-8 6h16"
-              />
-            </svg>
-          </div>
-          <ul className="menu menu-sm dropdown-content bg-base-100 rounded-box z-10 mt-3 w-52 p-2 shadow">
-            {navOptions}
-          </ul>
-        </div>
-        <img className="w-6 h-6" src={logo} alt="Logo" />
-      </div>
-      <div className="navbar-end hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">{navOptions}</ul>
-      </div>
+    <div className="w-full flex justify-center">
+      <ul className="menu menu-horizontal w-full justify-between px-4">
+        {navOptions}
+      </ul>
     </div>
+  </div>
+  
   );
 };
 

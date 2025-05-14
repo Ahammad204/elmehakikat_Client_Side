@@ -6,12 +6,14 @@ import {
   PawPrint,
   HandCoins,
   UserRound,
-  Heart
+  Heart,
+  Folder,
+  Settings
 } from "lucide-react";
 
 const Dashboard = () => {
   const user = {
-    displayName: "Admin" 
+    displayName: "Admin"
   };
 
   return (
@@ -47,23 +49,16 @@ const Dashboard = () => {
           </li>
 
           <li>
-            <NavLink to="/dashboard/users">
+            <NavLink to="/dashboard/add-blog">
               <UserRound className="w-5 h-5" />
-              All Users
+              Add Blog
             </NavLink>
           </li>
 
           <li>
-            <NavLink to="/dashboard/allPets">
-              <PawPrint className="w-5 h-5" />
-              All Pets
-            </NavLink>
-          </li>
-
-          <li>
-            <NavLink to="/dashboard/allDonation">
-              <HandCoins className="w-5 h-5" />
-              All Donations
+            <NavLink to="/dashboard/category-manage">
+              <Settings className="w-5 h-5" />
+              Manage Category
             </NavLink>
           </li>
 
@@ -77,46 +72,20 @@ const Dashboard = () => {
           </li>
 
           <li>
-            <NavLink to="/dashboard/addedPet">
-              <PawPrint className="w-5 h-5" />
-              My Added Pets
+            <NavLink to="/dashboard/all-book">
+              <Folder className="w-5 h-5" />
+              Book Library
             </NavLink>
           </li>
 
           <li>
-            <NavLink to="/dashboard/adoptionRequest">
+            <NavLink to="/dashboard/all-blog">
               <HandCoins className="w-5 h-5" />
-              Adoption Requests
+              Blog Library
             </NavLink>
           </li>
 
-          <li>
-            <NavLink to="/dashboard/createDonationCampaign">
-              <HandCoins className="w-5 h-5" />
-              Create Donation Campaign
-            </NavLink>
-          </li>
-
-          <li>
-            <NavLink to="/dashboard/addedDonation">
-              <HandCoins className="w-5 h-5" />
-              My Donation Campaigns
-            </NavLink>
-          </li>
-
-          <li>
-            <NavLink to="/dashboard/myDonation">
-              <HandCoins className="w-5 h-5" />
-              My Donations
-            </NavLink>
-          </li>
-
-          <li>
-            <NavLink to="/dashboard/favorites">
-              <Heart className="w-5 h-5" />
-              Favorites
-            </NavLink>
-          </li>
+       
 
         </ul>
       </div>
