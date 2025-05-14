@@ -8,11 +8,7 @@ export const Music = () => {
   const [activeCategory, setActiveCategory] = useState("All");
   const [searchTerm, setSearchTerm] = useState("");
 
-<<<<<<< HEAD
-  const categories = ['All', 'Nasheed', 'Instrumental', 'Spiritual', 'Classical', 'Devotional'];
-=======
   // const categories = ['All', 'Nasheed', 'Instrumental', 'Spiritual', 'Classical', 'Devotional'];
->>>>>>> 045299524a4689c971ccff2c64958c52e89c8901
 
   useEffect(() => {
     fetch("http://localhost:5000/all-music") // Change to your deployed backend URL if needed

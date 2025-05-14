@@ -3,16 +3,6 @@ import { Search } from "lucide-react";
 
 export const Books = () => {
   const [books, setBooks] = useState([]);
-<<<<<<< HEAD
-  const [activeCategory, setActiveCategory] = useState('All');
-  const [searchTerm, setSearchTerm] = useState('');
-
-  const categories = ['All', 'Tawheed', 'Tasawwuf', 'Fiqh', 'Hadith', 'Aqidah','quran'];
-
-  // Fetch books.json
-  useEffect(() => {
-    fetch('http://localhost:5000/all-books')
-=======
   const [categories, setCategories] = useState(["All"]);
   const [activeCategory, setActiveCategory] = useState("All");
   const [searchTerm, setSearchTerm] = useState("");
@@ -20,7 +10,6 @@ export const Books = () => {
   // Fetch books.json
   useEffect(() => {
     fetch("http://localhost:5000/all-books")
->>>>>>> 045299524a4689c971ccff2c64958c52e89c8901
       .then((res) => res.json())
       .then((data) => setBooks(data));
   }, []);
