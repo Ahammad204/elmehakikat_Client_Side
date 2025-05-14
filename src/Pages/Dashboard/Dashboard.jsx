@@ -40,9 +40,9 @@ const Dashboard = () => {
           </li>
 
           <li>
-            <NavLink to="/dashboard/book-collection">
+            <NavLink to="/dashboard/add-book">
               <BookOpen className="w-5 h-5" />
-              Book Collection
+              Add Book
             </NavLink>
           </li>
 

@@ -29,12 +29,12 @@ const UpdateMusic = () => {
   // Formik initialization
   const formik = useFormik({
     initialValues: {
-      title: musicData ? musicData.title : "",
-      category: musicData ? musicData.category : "",
-      audio: musicData ? musicData.audioUrl : "",
-      tags: musicData ? musicData.tags : "",
-      lyrics: musicData ? musicData.lyrics : "",
-      meanings: musicData ? musicData.meanings : "",
+      title: "",
+      category: "",
+      audio: "",
+      tags: "",
+      lyrics: "",
+      meanings: "",
     },
     validationSchema: Yup.object({
       title: Yup.string().required("Title is required"),
@@ -82,6 +82,20 @@ const UpdateMusic = () => {
     formik.setFieldValue("category", selectedOption.value);
   };
 
+  useEffect(() => {
+    if (musicData) {
+      // Update formik values when music data is fetched
+      formik.setValues({
+        title: musicData.title,
+        category: musicData.category,
+        audio: musicData.audioUrl,
+        tags: musicData.tags.join(", "),
+        lyrics: musicData.lyrics,
+        meanings: musicData.meanings,
+      });
+    }
+  }, [musicData]);
+
   if (!musicData) {
     return <div className="text-center py-20 text-[#b99543]">Loading...</div>;
   }
@@ -103,7 +117,7 @@ const UpdateMusic = () => {
             name="title"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
-            value={musicData.title}
+            value={formik.values.title}
             className="input input-bordered w-full"
           />
           {formik.touched.title && formik.errors.title ? <div>{formik.errors.title}</div> : null}
@@ -144,7 +158,7 @@ const UpdateMusic = () => {
             name="audio"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
-            value={musicData.audioUrl}
+            value={formik.values.audio}
             className="input input-bordered w-full"
           />
           {formik.touched.audio && formik.errors.audio ? <div>{formik.errors.audio}</div> : null}
@@ -162,7 +176,7 @@ const UpdateMusic = () => {
             name="tags"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
-            value={musicData.tags}
+            value={formik.values.tags}
             className="input input-bordered w-full"
           />
           {formik.touched.tags && formik.errors.tags ? <div>{formik.errors.tags}</div> : null}
@@ -178,7 +192,7 @@ const UpdateMusic = () => {
             name="lyrics"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
-            value={musicData.lyrics}
+            value={formik.values.lyrics}
             className="textarea textarea-bordered w-full"
             placeholder="Enter Lyrics"
           />
@@ -195,7 +209,7 @@ const UpdateMusic = () => {
             name="meanings"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
-            value={musicData.meanings}
+            value={formik.values.meanings}
             className="textarea textarea-bordered w-full"
             placeholder="Enter Meanings"
           />

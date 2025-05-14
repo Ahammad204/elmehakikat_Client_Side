@@ -6,11 +6,11 @@ export const Books = () => {
   const [activeCategory, setActiveCategory] = useState('All');
   const [searchTerm, setSearchTerm] = useState('');
 
-  const categories = ['All', 'Tawheed', 'Tasawwuf', 'Fiqh', 'Hadith', 'Aqidah'];
+  const categories = ['All', 'Tawheed', 'Tasawwuf', 'Fiqh', 'Hadith', 'Aqidah','quran'];
 
   // Fetch books.json
   useEffect(() => {
-    fetch('/books.json')
+    fetch('http://localhost:5000/all-books')
       .then((res) => res.json())
       .then((data) => setBooks(data));
   }, []);
