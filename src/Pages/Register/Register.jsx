@@ -1,20 +1,45 @@
+import { useContext } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const Register = () => {
+ const { createUser } = useContext(AuthContext);
   const navigate = useNavigate();
-
   const handleSubmit = (e) => {
     e.preventDefault();
-
     const form = e.target;
+
     const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
+    const photo = "https://i.ibb.co.com/6V9Cg8t/user.jpg";
+    const role = "member";
 
-    // You can send this data to your backend API here
-    console.log("Registering:", { name, email, password });
+    
 
-    navigate("/login"); // Redirect to login page
+    if (!name || !email || !password ) {
+      toast.error("Please fill all fields");
+      return;
+    }
+
+    if (password.length < 6) {
+      toast.error("Password must be at least 6 characters");
+      return;
+    }
+
+
+
+    createUser(email, password, name, photo,role)
+      .then((result) => {
+        toast.success("Create Account Successfully || Now Login");
+        navigate("/login");
+
+        // console.log(result);
+        // console.log(res);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
   return (

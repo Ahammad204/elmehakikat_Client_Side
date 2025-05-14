@@ -1,7 +1,11 @@
 import { useNavigate, Link } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider";
+import { useContext } from "react";
+
 
 const Login = () => {
   const navigate = useNavigate();
+  const {signIn} = useContext(AuthContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -10,11 +14,25 @@ const Login = () => {
     const email = form.email.value;
     const password = form.password.value;
 
-    // You can send this to your backend API
-    console.log("Logging in with:", { email, password });
+ if (!email || !password) {
+      console.log("Please fill all fields");
+      return;
+    }
 
-    navigate("/"); // Redirect after successful login
+    console.log(email);
+    console.log(password)
+
+    signIn(email, password)
+      .then((result) => {
+        navigate("/");
+        
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
+
+
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-50 px-4">

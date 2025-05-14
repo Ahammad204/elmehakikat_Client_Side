@@ -18,6 +18,10 @@ import AllBlog from "../Pages/Admin/AllBlog/AllBlog";
 import UpdateBlog from "../Pages/Admin/AllBlog/UpdateBlog";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
+import { Userprofile } from "../Pages/Dashboard/UserProfile/Userprofile";
+import PrivateRoute from "./PrivateRoute";
+import AdminRoute from "./AdminRouter";
+import AllUser from "../Pages/Admin/AllUser/AllUser";
 
 export const router = createBrowserRouter([
   {
@@ -56,49 +60,59 @@ export const router = createBrowserRouter([
       },
   {
     path: "/dashboard",
-    element: <Dashboard />,
+    element: <PrivateRoute><Dashboard /></PrivateRoute>,
+
     children: [
       {
+        path:"/dashboard",
+        element:<PrivateRoute><Userprofile></Userprofile></PrivateRoute>
+      },
+      {
         path: "/dashboard/music-library",
-        element: <AddMusic></AddMusic>,
+        element: <PrivateRoute><AdminRoute><AddMusic></AddMusic></AdminRoute></PrivateRoute>,
       },
       {
         path: "/dashboard/all-music",
-        element: <AllMusic></AllMusic>,
+        element: <PrivateRoute><AdminRoute><AllMusic></AllMusic></AdminRoute></PrivateRoute>,
       },
       {
         path: "/dashboard/all-book",
-        element: <AllBook></AllBook>,
+        element: <PrivateRoute><AdminRoute><AllBook></AllBook></AdminRoute></PrivateRoute>,
       },
       {
         path: "/dashboard/update-music/:id",
-        element: <UpdateMusic></UpdateMusic>,
+        element: <PrivateRoute><AdminRoute><UpdateMusic></UpdateMusic></AdminRoute></PrivateRoute>,
       },
       
       {
         path: "/dashboard/all-blog",
-        element: <AllBlog></AllBlog>,
+        element: <PrivateRoute><AdminRoute><AllBlog></AllBlog></AdminRoute></PrivateRoute>,
       },
       {
         path: "/dashboard/update-blog/:id",
-        element: <UpdateBlog></UpdateBlog>,
+        element: <PrivateRoute><AdminRoute><UpdateBlog></UpdateBlog></AdminRoute></PrivateRoute>,
       },
       
       {
         path: "/dashboard/update-book/:id",
-        element: <UpdateBook></UpdateBook>,
+        element: <PrivateRoute><AdminRoute><UpdateBook></UpdateBook></AdminRoute></PrivateRoute>,
       },
       {
         path: "/dashboard/add-book",
-        element: <AddBook></AddBook>,
+        element: <PrivateRoute><AdminRoute><AddBook></AddBook></AdminRoute></PrivateRoute>,
       },
       {
         path: "/dashboard/add-blog",
-        element: <AddBlog></AddBlog>,
+        element: <PrivateRoute><AdminRoute><AddBlog></AddBlog></AdminRoute></PrivateRoute>,
       },
       {
         path: "/dashboard/category-manage",
-        element: <CategoryManager></CategoryManager>,
+        element: <PrivateRoute><AdminRoute><CategoryManager></CategoryManager></AdminRoute></PrivateRoute>,
+      },
+      
+      {
+        path: "/dashboard/all-user",
+        element: <PrivateRoute><AdminRoute><AllUser></AllUser></AdminRoute></PrivateRoute>,
       },
     ],
   },
