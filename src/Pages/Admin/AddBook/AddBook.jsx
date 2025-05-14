@@ -2,28 +2,13 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import Select from "react-select";
 import Swal from "sweetalert2";
-<<<<<<< HEAD
-import { useState } from "react";
-=======
 import { useEffect, useState } from "react";
->>>>>>> 045299524a4689c971ccff2c64958c52e89c8901
 import SectionTitle from "../../../Components/SectionTItle/SectionTItle";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 
 const AddBook = () => {
   const axiosPublic = useAxiosPublic();
   const [selectedCategories, setSelectedCategories] = useState([]);
-<<<<<<< HEAD
-
-  const categoryOptions = [
-    { value: "Aqidah", label: "Aqidah" },
-    { value: "Hadith", label: "Hadith" },
-    { value: "Fiqh", label: "Fiqh" },
-    { value: "Tasawwuf", label: "Tasawwuf" },
-    { value: "Tawheed", label: "Tawheed" },
-    { value: "Quran", label: "Quran" }
-  ];
-=======
   const [categoryOptions, setCategoryOptions] = useState([]);
 
  // Fetch categories from backend
@@ -44,7 +29,6 @@ const AddBook = () => {
     fetchCategories();
   }, [axiosPublic]);
 
->>>>>>> 045299524a4689c971ccff2c64958c52e89c8901
 
   const formik = useFormik({
     initialValues: {
