@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Search } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { API_URL } from "../../../config";
 
 export const Blogs = () => {
   const [blogs, setBlogs] = useState([]);
@@ -12,14 +13,14 @@ export const Blogs = () => {
 
   // Fetch blogs.json
   useEffect(() => {
-    fetch('http://localhost:5000/all-blogs')
+    fetch(`${API_URL}/all-blogs`)
       .then((res) => res.json())
       .then((data) => setBlogs(data));
   }, []);
 
       // Fetch all categories
   useEffect(() => {
-    fetch("http://localhost:5000/categories/blog")
+    fetch(`${API_URL}/categories/blog`)
       .then((res) => res.json())
       .then((data) => {
         const fetchedCategories = data.map((item) => item.category);

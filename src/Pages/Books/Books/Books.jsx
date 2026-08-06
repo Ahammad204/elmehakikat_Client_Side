@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Search } from "lucide-react";
+import { API_URL } from "../../../config";
 
 export const Books = () => {
   const [books, setBooks] = useState([]);
@@ -9,13 +10,13 @@ export const Books = () => {
 
   // Fetch books.json
   useEffect(() => {
-    fetch("http://localhost:5000/all-books")
+    fetch(`${API_URL}/all-books`)
       .then((res) => res.json())
       .then((data) => setBooks(data));
   }, []);
   // Fetch all categories
   useEffect(() => {
-    fetch("http://localhost:5000/categories/book")
+    fetch(`${API_URL}/categories/book`)
       .then((res) => res.json())
       .then((data) => {
         const fetchedCategories = data.map((item) => item.category);

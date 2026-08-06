@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import { API_URL } from "../../../config";
 
 export const BlogsDetails = () => {
   const { id } = useParams();
@@ -7,7 +8,7 @@ export const BlogsDetails = () => {
   console.log(id)
 
   useEffect(() => {
-    fetch('http://localhost:5000/all-blogs')
+    fetch(`${API_URL}/all-blogs`)
       .then((res) => res.json())
       .then((data) => {
         const found = data.find((item) => item._id === id);

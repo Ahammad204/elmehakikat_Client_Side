@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { Pencil } from "lucide-react";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import toast from "react-hot-toast";
+import { API_URL } from "../../../config";
 
 export const Userprofile = () => {
   const { user, setUser } = useContext(AuthContext);
@@ -13,7 +14,7 @@ export const Userprofile = () => {
   // Fetch user data from server
   const getUserData = async () => {
     try {
-      const res = await fetch(`http://localhost:5000/api/user`, {
+      const res = await fetch(`${API_URL}/api/user`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
@@ -76,7 +77,7 @@ export const Userprofile = () => {
 
   const handleSave = async () => {
     try {
-      const res = await fetch(`http://localhost:5000/api/update-profile`, {
+      const res = await fetch(`${API_URL}/api/update-profile`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

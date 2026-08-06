@@ -3,6 +3,7 @@ import React, { createContext, useEffect, useState } from "react";
 
 import { jwtDecode } from "jwt-decode";
 import toast from "react-hot-toast";
+import { API_URL } from "../config";
 export const AuthContext = createContext(null);
 
 
@@ -16,7 +17,7 @@ const AuthProvider = ({ children }) => {
     if (!token) return;
 
     try {
-      const res = await fetch("http://localhost:5000/api/user", {
+      const res = await fetch(`${API_URL}/api/user`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -40,7 +41,7 @@ const AuthProvider = ({ children }) => {
  const createUser = async (email, password, name,photo,role) => {
     setLoading(true);
     try {
-      const res = await fetch("http://localhost:5000/api/register", {
+      const res = await fetch(`${API_URL}/api/register`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password, name,photo,role }),
@@ -65,7 +66,7 @@ const AuthProvider = ({ children }) => {
  const signIn = async (email, password) => {
   setLoading(true);
   try {
-    const res = await fetch("http://localhost:5000/api/login", {
+    const res = await fetch(`${API_URL}/api/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password }),

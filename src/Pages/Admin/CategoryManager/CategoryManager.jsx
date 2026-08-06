@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { API_URL } from "../../../config";
 
 export default function MultiCategoryManager() {
   const [selectedSection, setSelectedSection] = useState("blog");
@@ -14,7 +15,7 @@ export default function MultiCategoryManager() {
   // Fetch categories from server
   const fetchCategories = async (section) => {
     try {
-      const response = await axios.get(`http://localhost:5000/categories/${section}`);
+      const response = await axios.get(`${API_URL}/categories/${section}`);
       const categoryNames = response.data.map(item => item.category);
       setCategories(prev => ({
         ...prev,
@@ -31,7 +32,7 @@ export default function MultiCategoryManager() {
     if (!trimmedCategory || categories[selectedSection].includes(trimmedCategory)) return;
 
     try {
-      await axios.post("http://localhost:5000/add-category", {
+      await axios.post(`${API_URL}/add-category`, {
         section: selectedSection,
         category: trimmedCategory,
       });
@@ -46,11 +47,11 @@ export default function MultiCategoryManager() {
   const deleteCategory = async (categoryToDelete) => {
     try {
       // First, find the category _id to delete
-      const response = await axios.get(`http://localhost:5000/categories/${selectedSection}`);
+      const response = await axios.get(`${API_URL}/categories/${selectedSection}`);
       const found = response.data.find(item => item.category === categoryToDelete);
 
       if (found) {
-        await axios.delete(`http://localhost:5000/delete-category/${found._id}`);
+        await axios.delete(`${API_URL}/delete-category/${found._id}`);
         fetchCategories(selectedSection); // Refresh list
       }
     } catch (err) {

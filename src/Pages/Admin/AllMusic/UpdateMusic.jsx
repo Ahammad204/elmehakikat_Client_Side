@@ -5,6 +5,7 @@ import * as Yup from "yup";
 import Swal from "sweetalert2";
 import Select from "react-select";
 import SectionTitle from "../../../Components/SectionTItle/SectionTItle";
+import { API_URL } from "../../../config";
 
 const UpdateMusic = () => {
   const { id } = useParams();
@@ -14,7 +15,7 @@ const UpdateMusic = () => {
 
   // Fetch music data to update
   useEffect(() => {
-    fetch(`http://localhost:5000/all-music`)
+    fetch(`${API_URL}/all-music`)
       .then((res) => res.json())
       .then((data) => {
         const found = data.find((item) => item._id === id);
@@ -55,7 +56,7 @@ const UpdateMusic = () => {
       };
 
       try {
-        const res = await fetch(`http://localhost:5000/update-music/${id}`, {
+        const res = await fetch(`${API_URL}/update-music/${id}`, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(updatedMusicItem),

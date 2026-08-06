@@ -5,6 +5,7 @@ import * as Yup from "yup";
 import Swal from "sweetalert2";
 import Select from "react-select";
 import SectionTitle from "../../../Components/SectionTItle/SectionTItle";
+import { API_URL } from "../../../config";
 
 const UpdateBlog = () => {
   const { id } = useParams();
@@ -17,7 +18,7 @@ const UpdateBlog = () => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/categories/blog`);
+        const response = await fetch(`${API_URL}/categories/blog`);
         const data = await response.json();
         const categoryOptions = data.map((category) => ({
           value: category.category,
@@ -34,7 +35,7 @@ const UpdateBlog = () => {
 
   // Fetch blog data to update
   useEffect(() => {
-    fetch(`http://localhost:5000/all-blogs`)
+    fetch(`${API_URL}/all-blogs`)
       .then((res) => res.json())
       .then((data) => {
         const found = data.find((item) => item._id === id);
@@ -69,7 +70,7 @@ const UpdateBlog = () => {
       };
 
       try {
-        const res = await fetch(`http://localhost:5000/update-blog/${id}`, {
+        const res = await fetch(`${API_URL}/update-blog/${id}`, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(updatedBlogItem),

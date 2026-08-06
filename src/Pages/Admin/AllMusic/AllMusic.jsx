@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { Pagination } from '@mui/material';
 import axios from 'axios';
+import { API_URL } from "../../../config";
 
 const AllMusic = () => {
     const [songs, setSongs] = useState([]);
@@ -12,7 +13,7 @@ const AllMusic = () => {
 
     const fetchSongs = async () => {
         try {
-            const res = await axios.get('http://localhost:5000/all-music');
+            const res = await axios.get(`${API_URL}/all-music`);
             setSongs(res.data);
         } catch (err) {
             console.error('Error fetching songs:', err);
@@ -34,7 +35,7 @@ const AllMusic = () => {
             confirmButtonText: 'Yes, delete it!',
         }).then((result) => {
             if (result.isConfirmed) {
-                axios.delete(`http://localhost:5000/delete-music/${id}`).then((res) => {
+                axios.delete(`${API_URL}/delete-music/${id}`).then((res) => {
                     if (res.data.deletedCount > 0) {
                         fetchSongs();
                         Swal.fire('Deleted!', 'The music has been deleted.', 'success');

@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { Pagination } from '@mui/material';
 import axios from 'axios';
+import { API_URL } from "../../../config";
 
 const AllBook = () => {
     const [books, setBooks] = useState([]);
@@ -12,7 +13,7 @@ const AllBook = () => {
 
     const fetchBooks = async () => {
         try {
-            const res = await axios.get('http://localhost:5000/all-books');
+            const res = await axios.get(`${API_URL}/all-books`);
             setBooks(res.data);
         } catch (err) {
             console.error('Error fetching books:', err);
@@ -34,7 +35,7 @@ const AllBook = () => {
             confirmButtonText: 'Yes, delete it!',
         }).then((result) => {
             if (result.isConfirmed) {
-                axios.delete(`http://localhost:5000/delete-book/${id}`).then((res) => {
+                axios.delete(`${API_URL}/delete-book/${id}`).then((res) => {
                     if (res.data.deletedCount > 0) {
                         fetchBooks();
                         Swal.fire('Deleted!', 'The book has been deleted.', 'success');

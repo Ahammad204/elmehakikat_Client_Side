@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { API_URL } from "../../../config";
 
 export const MusicDetails = () => {
   const { id } = useParams(); // Get song id from URL
   const [song, setSong] = useState(null);
 
   useEffect(() => {
-    fetch('http://localhost:5000/all-music') // Correct URL
+    fetch(`${API_URL}/all-music`) // Correct URL
       .then((res) => res.json())
       .then((data) => {
         const foundSong = data.find((item) => item._id === id); // Compare with _id

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Search } from "lucide-react";
 import { Link } from "react-router-dom";
+import { API_URL } from "../../../config";
 
 export const Music = () => {
   const [songs, setSongs] = useState([]);
@@ -11,7 +12,7 @@ export const Music = () => {
   // const categories = ['All', 'Nasheed', 'Instrumental', 'Spiritual', 'Classical', 'Devotional'];
 
   useEffect(() => {
-    fetch("http://localhost:5000/all-music") // Change to your deployed backend URL if needed
+    fetch(`${API_URL}/all-music`) // Change to your deployed backend URL if needed
       .then((res) => res.json())
       .then((data) => setSongs(data))
       .catch((err) => console.error("Error fetching music:", err));
@@ -19,7 +20,7 @@ export const Music = () => {
 
   // Fetch all categories
   useEffect(() => {
-    fetch("http://localhost:5000/categories/song")
+    fetch(`${API_URL}/categories/song`)
       .then((res) => res.json())
       .then((data) => {
         const fetchedCategories = data.map((item) => item.category);

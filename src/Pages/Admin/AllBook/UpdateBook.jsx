@@ -5,6 +5,7 @@ import * as Yup from "yup";
 import Swal from "sweetalert2";
 import Select from "react-select";
 import SectionTitle from "../../../Components/SectionTItle/SectionTItle";
+import { API_URL } from "../../../config";
 
 const UpdateBook = () => {
   const { id } = useParams();
@@ -15,7 +16,7 @@ const UpdateBook = () => {
 
   // Fetch book data to update
   useEffect(() => {
-    fetch(`http://localhost:5000/all-books`)
+    fetch(`${API_URL}/all-books`)
       .then((res) => res.json())
       .then((data) => {
         const found = data.find((item) => item._id === id);
@@ -29,7 +30,7 @@ const UpdateBook = () => {
 
   // Fetch categories for books section
   useEffect(() => {
-    fetch("http://localhost:5000/categories/book")
+    fetch(`${API_URL}/categories/book`)
       .then((res) => res.json())
       .then((data) => {
         const categoryOptions = data.map((category) => ({
@@ -63,7 +64,7 @@ const UpdateBook = () => {
       };
 
       try {
-        const res = await fetch(`http://localhost:5000/update-book/${id}`, {
+        const res = await fetch(`${API_URL}/update-book/${id}`, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(updatedBookItem),

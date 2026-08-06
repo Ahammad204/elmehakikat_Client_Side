@@ -1,11 +1,11 @@
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import useAuth from "./useAuth";
+import { API_URL } from "../config";
 
 
 const axiosSecure = axios.create({
-    // baseURL: 'https://php-etco-server-side.vercel.app'
-    baseURL: 'http://localhost:5000'
+    baseURL: API_URL,
 })
 const useAxiosSecure = () => {
     const navigate = useNavigate();
